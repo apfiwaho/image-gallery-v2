@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import PhotoContainer from './components/PhotoContainer'
+import $ from 'jquery';
 import Pagination from './components/Pagination'
 
 class App extends Component {
@@ -9,34 +9,38 @@ class App extends Component {
     this.state = {
       photos: []
     };
-  }
+   
+    var AjaxGet = function (url) {
 
-  componentDidMount(){
-    fetch("https://jsonplaceholder.typicode.com/photos")
-    .then(response => {
-      if (!response.ok) {
-        throw Error("Error fetching images");
-      }
-      return response.json()
-    .then(allData => {
-      this.setState({photos: allData});
-      })
-    .catch(err => {
-      throw Error(err.message);
-        })
-      }
-    );
-    console.log(this.state.photos);
+      var result = $.ajax({  type: "GET", url: url,dataType: "json",async: false,success: function (data) {}}).responseJSON;
+  
+      return  result;
   }
+  var pics =AjaxGet('https://jsonplaceholder.typicode.com/photos');
 
+  var i=0;
+  $('.slideShow').attr('src',pics[i].url);
+  setInterval(function () {
+      
+      i++;
+      if (i > 3){
+          i=0;
+      }
+      $('.slideShow').attr('src',pics[i].url).stop(true,true).hide().fadeIn();
+  },5000);
+    
+    }
   render() { 
     return ( 
       <section className='app'>
-        <h1 className='title'>Image Gallery</h1>
+        <h1 className='heading'>Image Gallery</h1>
         
-        <Pagination photos={this.state.photos}/>
+            <img className="slideShow" />
+      
+        
+        <Pagination />
       </section>
-     );
+     ); 
   }
 }
  

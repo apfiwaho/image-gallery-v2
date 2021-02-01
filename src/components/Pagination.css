@@ -3,7 +3,6 @@
   display: flex;
   list-style: none;
   outline: none;
-  position: relative;
 }
 
 .pagination > .active > a {
@@ -42,6 +41,7 @@
   border-radius: unset;
 }
 .container {
+  display: block;
   width: 100%;
   padding-left: 10px;
   padding-right: 10px;
@@ -52,6 +52,7 @@
   margin-right: auto;
   float: left;
   width: 25%;
+  margin-bottom: 25px;
 }
 
 img {
@@ -59,12 +60,17 @@ img {
   margin-left: auto;
   margin-right: auto;
   transition: 1s;
+  border-radius: 4px;
+  width: 150px;
 }
 
 img:hover {
   transform: scale(1.1);
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 
 .title {
   text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
 }

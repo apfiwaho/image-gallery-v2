@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import './Pagination.css'
-import SimpleReactLightbox from 'simple-react-lightbox'
 
 class Pagination extends Component {
     constructor(props){
@@ -34,6 +33,8 @@ class Pagination extends Component {
                   
                     </React.Fragment>)
 
+
+
                     this.setState({
                         pageCount: Math.ceil(data.length / this.state.perPage),
                         
@@ -61,8 +62,8 @@ class Pagination extends Component {
     
     render() { 
         return ( 
-            <div>
-                <div className="container">
+            <React.Fragment>
+                <div className="gallery">
                     {this.state.postData}
                 </div>
                 
@@ -79,7 +80,7 @@ class Pagination extends Component {
                     subContainerClassName={'pages pagination'}
                     activeClassName={'active'}
                 />
-            </div>
+            </React.Fragment>
          );
     }
 }

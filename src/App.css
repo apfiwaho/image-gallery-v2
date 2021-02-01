@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.heading {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: cornflowerblue;
+  text-align: center;
+}
